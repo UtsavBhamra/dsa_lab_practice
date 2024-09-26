@@ -48,8 +48,6 @@ int peek(struct stack* st){
     return st->top->data;
 }
 
-
-
 void display(struct stack* st){
     if(is_empty(st)){
         printf("empty stack");

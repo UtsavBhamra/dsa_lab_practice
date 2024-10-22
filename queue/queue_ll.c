@@ -1,15 +1,15 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-struct node{
+struct q_node{
     int data;
-    struct node* next;
+    struct q_node* next;
 };
 
 struct queue {
     int size;
-    struct node* front;
-    struct node* rear;
+    struct q_node* front;
+    struct q_node* rear;
 };
 
 int is_empty(struct queue* q){
@@ -22,15 +22,15 @@ int is_empty(struct queue* q){
 }
 
 void enqueue(struct queue* q,int data1){
-    struct node* temp_node = malloc(sizeof(struct node));
-    temp_node->data = data1;
-    temp_node->next = NULL;
+    struct q_node* temp_q_node = malloc(sizeof(struct q_node));
+    temp_q_node->data = data1;
+    temp_q_node->next = NULL;
     if(is_empty(q)){
-        q->front = temp_node;
-        q->rear = temp_node;
+        q->front = temp_q_node;
+        q->rear = temp_q_node;
     }
     else{
-        q->rear->next = temp_node;
+        q->rear->next = temp_q_node;
         q->rear = q->rear->next;
     }
     q->size++;
@@ -42,9 +42,9 @@ int dequeue(struct queue* q){
         return -1;
     }
     int ele = q->front->data;
-    struct node* temp_node = q->front;
+    struct q_node* temp_q_node = q->front;
     q->front = q->front->next;
-    free(temp_node);
+    free(temp_q_node);
     return ele;
 }
 
@@ -63,7 +63,7 @@ void display(struct queue* q){
         printf("empty queue");
     }
     else{
-        struct node* temp = q->front;
+        struct q_node* temp = q->front;
         printf("%d ",temp->data);
         while(temp!=q->rear){
             temp=temp->next;

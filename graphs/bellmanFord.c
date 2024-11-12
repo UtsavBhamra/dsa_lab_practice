@@ -19,6 +19,7 @@ struct Graph* createGraph(int V,int E){
     temp->edge = malloc(E*sizeof(struct Edge));
     return temp;
 }
+
 void printArr(int dist[], int n) {
     printf("Vertex   Distance from Source\n");
     for (int i = 0; i < n; ++i)

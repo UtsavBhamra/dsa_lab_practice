@@ -143,6 +143,25 @@ void inorder(struct node* root){
     inorder(root->right);
 }
 
+void levelorder(struct node* root){
+    struct node* queue[100];
+    int front=0;
+    int rear = 0;
+    queue[rear++]=root;
+    
+    while(front<rear){
+        struct node* temp = queue[front++];
+        printf("%d ",temp->data);
+        
+        if(temp->left!=NULL){
+            queue[rear++] = temp->left;
+        }
+        if(temp->right!=NULL){
+            queue[rear++]= temp->right;
+        }
+    }
+}
+
 int main(){
     int optNum,data,del,par,sel=1;
 	struct node* root=NULL;
@@ -155,7 +174,7 @@ int main(){
       sel = 1;
     	while(sel!=0)
     	{
-    		printf("\n\n1.Preorder\n2.Inorder\n3.Postorder");
+    		printf("\n\n1.Preorder\n2.Inorder\n3.Postorder\n4.Levelorder");
     		printf("\nChoose the option number: ");
     		scanf("%d",&sel);
         printf("\nThe tree is: ");
@@ -172,6 +191,9 @@ int main(){
     			case 3:
     			postorder(root);
     			break;
+    			
+    			case 4:
+    			levelorder(root);
     		}
       }
 			break;

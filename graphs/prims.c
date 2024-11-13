@@ -36,7 +36,7 @@ void primMST(int graph[V][V]){
     key[0] = 0;
     parent[0] = -1;
     
-    for(int count=0;count<V-1;count++){
+    for(int count=0;count<V-1;count++){ //notice that it is v-1
         int u = findMinKey(key,mstSet);
         mstSet[u] = 1;
         for(int v=0;v<V;v++){
